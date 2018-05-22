@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>injects a session id and streams IIIF data</description>
+    <author>mgoebel</author>
+    <website/>
+    <status>alpha</status>
+    <license>GNU-LGPL</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>iiif-stream</target>
+    <prepare/>
+    <finish/>
+    <permissions user="admin" group="dba" mode="rw-rw-r--"/>
+<deployed>2018-05-22T21:17:53.53+02:00</deployed>
+</meta>
