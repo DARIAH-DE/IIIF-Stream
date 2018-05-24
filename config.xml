@@ -1,0 +1,13 @@
+<config>
+    <sid>YOUR SID HERE</sid>
+<!--    <sid>YOUR SID HERE</sid>-->
+    <url>https://ci.de.dariah.eu/tg-iiif/</url>
+    <textgrid>
+        <crud>https://textgridlab.org/1.0/tgcrud/rest/</crud>
+<!--        <crud>https://dev.textgridlab.org/1.0/tgcrud/rest/</crud>-->
+        <iiif>https://textgridlab.org/1.0/digilib/rest/IIIF/</iiif>
+<!--        <iiif>https://dev.textgridlab.org/1.0/digilib/rest/IIIF/</iiif>-->
+        <search>https://textgridlab.org/1.0/tgsearch</search>
+<!--        <search>https://dev.textgridlab.org/1.0/tgsearch</search>-->
+    </textgrid>
+</config>

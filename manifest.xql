@@ -10,14 +10,18 @@ declare namespace tgs="http://www.textgrid.info/namespaces/middleware/tgsearch";
 declare option output:method "json";
 declare option output:media-type "application/json";
 
-let $resource := request:get-parameter("resource", "textgrid:3q4gd.0")
-let $sid := request:get-parameter("sid", "")
-let $this-url := request:get-parameter("this-url", "")
-let $this-url-manifests := $this-url || "/manifests/" || $resource
+let $config := doc("config.xml")/config
 
-let $url := "https://textgridlab.org/1.0/tgcrud/rest/"||$resource||"/metadata?sessionId="|| $sid
+let $resource := request:get-parameter("resource", "textgrid:3q4gd.0")
+let $sid := $config/sid/string()
+let $tgcrud := $config/textgrid/crud/string()
+let $tgsearch := $config/textgrid/search/string()
+let $this-url := $config/url/string()
+let $this-url-manifests := $this-url || "manifests/" || $resource
+
+let $url := $tgcrud||$resource||"/metadata?sessionId="|| $sid
 let $agg-metadata := httpclient:get(xs:anyURI($url), false(), ())
-let $all-metadata := httpclient:get(xs:anyURI("https://textgridlab.org/1.0/tgsearch/navigation/agg/"||$resource || "?sid=" || $sid), false(), ())
+let $all-metadata := httpclient:get(xs:anyURI($tgsearch || "/navigation/agg/"||$resource || "?sid=" || $sid), false(), ())
 
 let $images := 	for $result in $all-metadata//tgs:result
 				where starts-with($result//tgmd:format, "image/")
@@ -35,7 +39,7 @@ let $images := 	for $result in $all-metadata//tgs:result
 								"@id": $this-url-manifests ||"/annotation/" || string($result/@textgridUri) || ".json",
 								"@type": "oa:Annotation",
 								"resource": map {
-									"@id": "http://textgridlab.org/1.0/tgcrud/rest/" || string($result/@textgridUri) || "/data",
+									"@id": $tgcrud || string($result/@textgridUri) || "/data",
 									"@type": "dctypes:Image",
 									"format": string($result//tgmd:format),
 									"service": map {
