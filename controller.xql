@@ -22,7 +22,7 @@ switch ($path[1])
                                 catch * {
                                     error(QName("err", "load1"), string-join(("&#10;Could not load data from TextGrid: ",$data,$err:code,$err:description), "&#10;"))
                                 }
-
+                
             let $mime := string($request/httpclient:body/@mimetype)
             return
                 if($exist:resource = "info.json")
@@ -33,14 +33,14 @@ switch ($path[1])
                     => response:stream-binary($mime)
                 else
                     response:stream-binary($binary-data, $mime)
-
+    
     case "manifests" return
         <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
             <forward url="{$exist:controller}/manifest.xql">
                 <add-parameter name="resource" value="{$path[2]}"/>
             </forward>
         </dispatch>
-
+            
     default return <error>You sent something unexpected.</error>
 } catch * {
     <error>an error occured.</error>

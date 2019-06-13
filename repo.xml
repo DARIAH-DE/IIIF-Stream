@@ -7,9 +7,8 @@
     <license>GNU-LGPL</license>
     <copyright>true</copyright>
     <type>application</type>
-    <target>iiif-stream</target>
+    <target>iiifstream</target>
     <prepare/>
     <finish/>
     <permissions user="admin" group="dba" mode="rw-rw-r--"/>
-<deployed>2018-05-22T21:17:53.53+02:00</deployed>
 </meta>

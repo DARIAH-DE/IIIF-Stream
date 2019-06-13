@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <config>
-    <sid>YOUR SID HERE</sid>
-<!--    <sid>YOUR SID HERE</sid>-->
+    <sid></sid>
+<!--    <sid></sid>-->
     <url>https://ci.de.dariah.eu/tg-iiif/</url>
     <textgrid>
         <crud>https://textgridlab.org/1.0/tgcrud/rest/</crud>
