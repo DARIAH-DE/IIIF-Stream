@@ -1,0 +1,4 @@
+build/
+test/
+local.build.properties
+expath-pkg.xml
